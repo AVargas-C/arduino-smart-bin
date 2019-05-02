@@ -1,28 +1,45 @@
 /**
- * Title: Phase 2 - Servo Motor Control Test
+ * Title: Phase 3 - Motion-Triggered Actuator Control
  *
- * Brief: Tests servo motor control on pin 8. Rotates between 0 and 180 degrees 
- *        with 1-second intervals. Includes initial 2-second calibration delay.
+ * Brief: Reads motion input on pin 10 and controls actuators on pins 9 and 12.
+ *        When motion is detected, blinks pin 9 six times at 200ms intervals and 
+ *        sets pin 12 LOW. When no motion, sets pin 9 LOW and pin 12 HIGH.
  *
  * Author: Arturo Vargas Cuevas (a01652564@tec.mx)
  * Date:   2019-05-02
  */
 
- #include <Servo.h>
-
-Servo servo;
-void setup() {
-  servo.attach(8);
-  servo.write(0);
-  delay(2000);
-
+int motion = 0;
+ 
+void setup(){
+ 
+  pinMode(9, OUTPUT);
+  pinMode(12, OUTPUT);
+  pinMode(10, INPUT);
 }
-
-void loop() {
-
-  servo.write(180);
-  delay(1000);
-  servo.write(0);
-  delay(1000); 
-
+ 
+void loop(){
+ 
+  motion = digitalRead(10);
+  if (motion == HIGH){
+    digitalWrite(12, LOW);
+ 
+    digitalWrite(9, HIGH);
+    delay(200);
+    digitalWrite(9, LOW);
+    delay(200);
+    digitalWrite(9, HIGH);
+    delay(200);
+    digitalWrite(9, LOW);
+    delay(200);
+    digitalWrite(9, HIGH);
+    delay(200);
+    digitalWrite(9, LOW);
+    delay(200);
+   
+    } else {
+ 
+      digitalWrite(9, LOW);
+      digitalWrite(12, HIGH);
+  }
 }
