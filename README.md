@@ -13,7 +13,7 @@
 
 ## Overview
 
-Arduino Smart Bin is a motion-activated waste management system developed through four progressive phases. The system integrates a PIR motion sensor with RGB LED status indicators and a servo-controlled lid mechanism.
+Arduino Smart Bin is a motion-activated waste management system that encourages recycling by dispensing metro/subway tickets as rewards. When users dispose of trash in the bin, the system automatically detects the motion and dispenses a ticket as an incentive. Developed through four progressive phases, the system integrates a PIR motion sensor with RGB LED status indicators and a servo-controlled ticket dispenser mechanism.
 
 ## Project Phases
 
@@ -42,10 +42,11 @@ Arduino Smart Bin is a motion-activated waste management system developed throug
 - Servo actuation with timing logic
 - Blue (detecting) → Green (ready) → Red (blocked) states
 
-## Hardware Components
+## How It Works
 
-- Arduino Microcontroller
-- PIR Motion Sensor (pin 10)
-- RGB LED (Red: pin 12, Green: pin 11, Blue: pin 9)
-- Servo Motor (pin 8)
-- LED indicators and supporting electronics
+**Arduino-based system with:**
+- **PIR Sensor** - Located inside trash can, detects motion when items are disposed
+- **Servo Motor** - Controlled dispenser mechanism that releases metro/subway tickets as rewards
+- **RGB LED** - Real-time status indicator showing system state (detecting, ready, blocking)
+
+When trash is detected, the system triggers a reward sequence dispensing a ticket while providing visual feedback through the RGB LED.
